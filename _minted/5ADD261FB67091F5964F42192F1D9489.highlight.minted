@@ -1,0 +1,60 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{(* ::Package:: *)}
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*ClearAll[\PYGZdq{}Global`*\PYGZdq{}]*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*defining coordinates*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*coords = \PYGZob{}t, r, \PYGZbs{}[Theta], \PYGZbs{}[Phi]\PYGZcb{};*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*Robertson Walker Metric*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*g = \PYGZob{}\PYGZob{}\PYGZhy{}1,0,0,0\PYGZcb{}, \PYGZob{}0, a[t]\PYGZca{}2/(1\PYGZhy{}k*r\PYGZca{}2), 0, 0\PYGZcb{}, \PYGZob{}0,0, a[t]\PYGZca{}2*r\PYGZca{}2, 0 \PYGZcb{}, \PYGZob{}0,0, 0, a[t]\PYGZca{}2*r\PYGZca{}2*Sin[\PYGZbs{}[Theta]]\PYGZca{}2\PYGZcb{}\PYGZcb{};*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*gInv =Inverse[g];*)}
+\PYG{c}{(*	*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*calculating Christoffel symbols Gamma\PYGZca{}rho\PYGZus{}mu\PYGZus{}nu, *)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*n = 4; (*dimensions*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*christoffel = Table[Sum[1/2 gInv[[\PYGZbs{}[Rho], \PYGZbs{}[Lambda]]](D[g[[\PYGZbs{}[Nu],  \PYGZbs{}[Lambda]]], coords[[\PYGZbs{}[Mu]]]]+ D[g[[\PYGZbs{}[Mu],  \PYGZbs{}[Lambda]]], coords[[\PYGZbs{}[Nu]]]]\PYGZhy{} D[g[[\PYGZbs{}[Mu], \PYGZbs{}[Nu]]], coords[[ \PYGZbs{}[Lambda]]]]), \PYGZob{} \PYGZbs{}[Lambda],1, n\PYGZcb{}],\PYGZob{}\PYGZbs{}[Rho],1, n\PYGZcb{}, \PYGZob{}\PYGZbs{}[Mu], 1, n\PYGZcb{}, \PYGZob{}\PYGZbs{}[Nu],1, n\PYGZcb{}];*)}
+\PYG{c}{(*christoffel = Simplify[christoffel]*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*calculating Riemann curvature tensor R\PYGZca{}rho\PYGZus{}sigma\PYGZus{}mu\PYGZus{}nu*)}\PYG{o}{*}\PYG{p}{)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*riemann= Table[D[christoffel[[\PYGZbs{}[Rho], \PYGZbs{}[Nu], \PYGZbs{}[Sigma]]], coords[[\PYGZbs{}[Mu]]]]\PYGZhy{}D[christoffel[[\PYGZbs{}[Rho], \PYGZbs{}[Mu], \PYGZbs{}[Sigma]]], coords[[\PYGZbs{}[Nu]]]]+Sum[christoffel[[\PYGZbs{}[Lambda],\PYGZbs{}[Nu],\PYGZbs{}[Sigma]]]christoffel[[\PYGZbs{}[Rho], \PYGZbs{}[Lambda], \PYGZbs{}[Mu]]]\PYGZhy{}christoffel[[\PYGZbs{}[Lambda],\PYGZbs{}[Mu],\PYGZbs{}[Sigma]]]christoffel[[\PYGZbs{}[Rho], \PYGZbs{}[Lambda], \PYGZbs{}[Nu]]], \PYGZob{}\PYGZbs{}[Lambda], 1, n\PYGZcb{}], \PYGZob{}\PYGZbs{}[Rho],1, n\PYGZcb{},\PYGZob{}\PYGZbs{}[Sigma],1, n\PYGZcb{}, \PYGZob{}\PYGZbs{}[Mu], 1, n\PYGZcb{}, \PYGZob{}\PYGZbs{}[Nu],1, n\PYGZcb{}];*)}
+\PYG{c}{(*riemann = Simplify[riemann] ;*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*calculating Ricci tensor R\PYGZus{}mu\PYGZus{}nu*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*ricci = Table[Sum[riemann[[\PYGZbs{}[Rho], \PYGZbs{}[Mu], \PYGZbs{}[Rho], \PYGZbs{}[Nu]]], \PYGZob{}\PYGZbs{}[Rho], 1, n\PYGZcb{}], \PYGZob{}\PYGZbs{}[Mu], 1,n\PYGZcb{}, \PYGZob{}\PYGZbs{}[Nu], 1, n\PYGZcb{}];*)}
+\PYG{c}{(*ricci = Simplify[ricci]*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*calculating scalar curvature R*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*curvature = Sum[Sum[gInv[[\PYGZbs{}[Mu], \PYGZbs{}[Nu]]]ricci[[\PYGZbs{}[Mu], \PYGZbs{}[Nu]]], \PYGZob{}\PYGZbs{}[Mu], 1, n\PYGZcb{}],\PYGZob{}\PYGZbs{}[Nu], 1, n\PYGZcb{}];*)}
+\PYG{c}{(*curvature = Simplify[curvature]*)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*energy momentum tensor T\PYGZca{}mu\PYGZus{}nu*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*energyMomentumTensor = DiagonalMatrix[\PYGZob{}\PYGZhy{}\PYGZbs{}[Rho][t],p[t], p[t], p[t]\PYGZcb{}];*)}
+\PYG{c}{(**)}
+
+
+\PYG{c}{(* ::Input:: *)}
+\PYG{c}{(*(*energy conservation equation, == 0. Recall index 1 is temporal.*)}\PYG{o}{*}\PYG{p}{)}
+\PYG{c}{(*Sum [D[energyMomentumTensor[[\PYGZbs{}[Mu], 1]], coords[[\PYGZbs{}[Mu]]]]+energyMomentumTensor[[1,1]]*christoffel[[\PYGZbs{}[Mu], 1,\PYGZbs{}[Mu]]]\PYGZhy{} Sum[energyMomentumTensor[[\PYGZbs{}[Mu],\PYGZbs{}[Lambda]]]*christoffel[[\PYGZbs{}[Lambda], 1,\PYGZbs{}[Mu]]], \PYGZob{}\PYGZbs{}[Lambda], 1, n\PYGZcb{}], \PYGZob{}\PYGZbs{}[Mu], 1, n\PYGZcb{}]*)}
+\end{MintedVerbatim}

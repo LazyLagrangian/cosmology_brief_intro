@@ -1,0 +1,277 @@
+% Call the JHEP style package
+\documentclass[12pt,letterpaper]{article}         % For preprint
+
+\usepackage{jheppub} 
+\usepackage{tensor}
+\usepackage{amssymb,amsfonts}
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{minted}
+%\usepackage{draftfil}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%gives names of eqrefs and cites
+%If you do not have the msbm fonts, delete the following 10 lines
+\font\mybb=msbm10 at 10pt
+%\font\mybb=msbm12 at 12pt
+
+\renewcommand{\arraystretch}{1.2}
+\usepackage{epsfig}
+\newcommand\para{\paragraph{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\boldmath A Short Review of the FLRW Metric and the Friedmann Equations}
+
+\author{Liam Cavini}
+\emailAdd{liam.cavini@studio.unibo.it}
+
+\abstract{Written for the General Relativity course at UniBo, this short paper outlines the theoretical basics of cosmology. We begin by formalizing the geometric concepts of spatial homogeneity and isotropy to construct the Friedmann-Lemaître-Robertson-Walker (FLRW) metric and classify spaces of constant curvature. By modeling the universe's matter and energy content as perfect fluids and by applying the Einstein field equations, we derive the Friedmann equations, which govern the dynamic evolution of the scale factor, and briefly review their single-fluid solutions.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+\flushbottom
+
+\section{Introduction}
+Throughout human history, questions regarding the beginning and evolution of our universe have captivated humanity. Indeed, many civilizations have invented creation myths, often featuring some formless void as the original substance that makes up the universe.
+\para
+It was not until the 20th century that science made substantial contributions to answering these questions, driven by advances in astronomy and Albert Einstein's discovery of a new theory of gravity.
+\para
+One striking observational discovery is that on very large scales (more than 300 million light-years), the universe looks—and looked in the past—roughly the same everywhere and in every direction; that is, it is \emph{homogeneous} and \emph{isotropic}. 
+\para
+This motivates us to consider a simple model of the universe that includes these features to see what they tell us about the geometry of spacetime.
+
+\section{Homogeneity and Isotropy}
+What does it mean for the universe to be homogeneous? It certainly does not mean that the universe is the same at each point in “time"; four billion years ago the universe was a very different place from how it is today. Instead, homogeneity is a claim of uniformity in space. We capture this notion mathematically through the following definition: a homogeneous spacetime allows a one-parameter foliation of spacelike hypersurfaces $\Sigma_t$, such that, for every $p$, $q$ $\in \Sigma_t$, there exists an isometry of the spacetime metric $g_{\mu \nu}$ that takes $p$ into $q$.
+\para
+An isotropic universe should instead look the same in every direction. This is an observer-dependent statement: a spaceship flying at half the speed of light through our galaxy will not observe the universe as isotropic.
+\para
+To formally define isotropy, we then begin by introducing a timelike curve (i.e., an observer) with tangent vector $\bar{u}$. We will call it an \emph{isotropic observer} if, for all points $p$ in its trajectory, and any two unit “spatial" (that is, belonging to the orthogonal space of $\bar{u}$) vectors $\bar{s}_1$, $\bar{s}_2 \in V_p$ an isometry exists that sends $\bar{s}_1$ to $\bar{s}_2$ and leaves $p$ and $\bar{u}$ fixed. An immediate consequence of this definition is that there cannot exist a peqreferred vector in the orthogonal space of $\bar{u}$.
+\para
+If a homogeneous universe admits one isotropic observer, say intersecting the hypersurface $\Sigma_t$ at a point $p$, it must, by homogeneity, admit an isotropic observer passing through every other point of the surface. Theeqrefore, there must exist a congruence of timelike isotropic curves filling spacetime. 
+\para
+Furthermore, if we assume that the homogeneous foliation $\Sigma_t$ is unique, the timelike curves must be everywhere orthogonal to the surfaces of homogeneity; if this were not the case, the normal vector of $\Sigma_t$ would pick a special direction in the orthogonal space of $\bar{u}$, violating isotropy.
+\para
+Having set up our definitions, we can now explore what consequences they have for the metric of our spacetime. We focus for the moment on the induced metric $h_{i j}$ of one of the three-dimensional surfaces $\Sigma_t$.
+\para
+We can construct, from $h_{ij}$, the Riemann tensor $\tensor{R}{_{ij}^{ml}}$. By focusing on a specific point $p \in \Sigma_t$, we may view $\tensor{R}{_{ij}^{ml}}$ as a linear map acting on the space of 2-forms $W_p$
+\[
+\begin{gathered}
+L \colon W_p \to W_p \\
+\tilde{w}_{ij} \to \tensor{R}{_{ij}^{ml}} \tilde{w}_{ml} 
+\end{gathered}
+\]
+The image is indeed contained in $W_p$, since $\tensor{R}{_{ij}^{ml}} = -\tensor{R}{_{ji}^{ml}}$. Now we consider the inner product
+\[
+\braket{\tilde{w}, \tilde{\eta}} = \tilde{w}_{ij}\tilde{\eta}^{ij}
+\]
+It is straightforward to show that $L$ is a symmetric linear map with respect to this inner product, i.e. $\braket{L(\tilde{w}), \tilde{\eta}} = \braket{\tilde{w}, L(\tilde{\eta})}$. This follows from the property of the Riemann tensor to be symmetric under the swap of the first two and last two indices, $\tensor{R}{_{ij}_{ml}} = \tensor{R}{_{ml}_{ij}}$. We recall that a symmetric linear map, according to the spectral theorem, is always diagonalizable. This means that there must be some 2-forms that are eigenvectors of $L$. But picking a 2-form as special for being an eigenvector would be tantamount to picking a vector as special, since, in three dimensions, there is a natural map $w_{ij} \to v^k = \epsilon^{kij}w_{ij}$ between 2-forms and vectors. %todo: maybe i should divide by sqrt{g}?
+This would violate isotropy, so we conclude that every 2-form must be an eigenvector, or equivalently, that $L = 2K I$, where $2K$ is the common eigenvalue and $I$ is the identity. This fixes the form of the Riemann tensor as
+\[
+\tensor{R}{_{ia}^{jb}} = K(\delta_i{}^j\delta_a{}^b-\delta_a{}^j\delta_i{}^b)
+\]
+Alternatively, by lowering the indices:
+\begin{equation}
+\tensor{R}{_{ia}_{jb}} = K(h_{ij}h_{ab}-h_{aj}h_{bi})
+\label{const_curvature}
+\end{equation}
+By contracting the indices, we find that $K = \frac{R}{6}$, where $R$ is the scalar curvature. Since $\Sigma_t$ is homogeneous, $K$ must be constant over the whole surface. A manifold satisfying equation \eqref{const_curvature} with $K$ constant is called a space of constant curvature. It can be shown that %todo:add eqreference
+any two spaces of constant curvature with the same dimension, metric signature, and value of $K$ are locally isometric. Thus, we only need to identify one representative metric for each value of $K$. We can classify these metrics in three categories: $K >0$, $K = 0$ and $K<0$.
+\begin{itemize}
+    \item $K>0$ \textbf{(closed universe)}: positive values of $K$ correspond to 3-spheres, 
+    defined as surfaces of constant radius $a$ in Euclidean four-dimensional space. The metric, in polar coordinates, takes the form
+    \[
+        d \sigma^2 = {a^2}[d\chi^2 + \sin^2(\chi)(d\theta^2 + \sin^2 (\theta)d\phi^2)]
+    \]
+    The value of $K$ can be obtained by the radius through the equation $K = \frac{1}{a^2}$.
+    \item $K = 0$ \textbf{(flat universe)}: As one may expect, three-dimensional Euclidean space has constant zero curvature. Taking spherical coordinates to highlight the similarity with the other metrics, the metric is 
+    \[
+        d \sigma^2 = d\chi^2 + \chi^2(d\theta^2 + \sin^2(\theta) d\phi^2)
+    \]
+    \item $K<0$ \textbf{(open universe)}: Finally, the negative values of $K$ are obtained by considering three-dimensional hyperboloids in four-dimensional Minkowski space-time, defined as the surfaces that satisfy constraints of the form
+    \[
+        t^2 - x^2 - y^2 - z^2 = a^2
+    \]
+    where $a$ is a real number. The metric takes the form
+    \[
+    d \sigma^2 = {a^2}[d\chi^2 + \sinh^2(\chi)(d\theta^2 + \sin^2(\theta) d\phi^2)]
+    \]
+    It turns out that the value of $K$ is related to the parameter $a$ by the equation $K = -\frac{1}{a^2}$.
+\end{itemize}
+
+
+\section{The FLRW Metric}
+
+Having classified all possible metrics of the homogeneous surfaces, we now seek to determine the metric of the full spacetime. Any vector $\bar{v}$ belonging to the tangent of the manifold can be decomposed into a component $\bar{v}_\parallel$ parallel to the isotropic observer's tangent  vector $\bar{u}$, and an orthogonal component $\bar{v}_\perp$. We then find that 
+\begin{equation}
+    g(\bar{v}, \bar{w}) = g(\bar{v}_{\parallel}, \bar{w}_{\parallel}) + g(\bar{v}_\perp, \bar{w}_\perp) = g(\bar{v}_{\parallel}, \bar{w}_{\parallel}) + h_t(\bar{v}_\perp, \bar{w}_\perp)
+\label{metric_decomposition}
+\end{equation}
+
+In the last equality we have used the fact that the isotropic observers are everywhere orthogonal to $\Sigma_t$, theeqrefore the orthogonal space coincides with the tangent space of $\Sigma_t$, and we can use the induced metric $h_t$.
+\para
+We can now construct a global coordinate system for spacetime as follows: we start by selecting a homogeneous surface of initial time, $\Sigma_0$. Then we endow this surface with appropriate coordinates, based on the value of $K$. At each point of $\Sigma_0$ we place an isotropic observer, with a clock that measures the proper time. Then each point of the manifold will be identified by the time the observer measures when passing through it, and by the three spatial coordinates with which the observer started (the ones assigned on $\Sigma_0$).
+\para
+One may wonder if the surfaces of constant time under such a choice of coordinates are the elements of the foliation $\Sigma_t$, as the notation suggests. This must be the case, since otherwise we could distinguish points on $\Sigma_0$ by the homogeneous surface they end up on after a time $t$.
+\para
+In these coordinates, using equation \eqref{metric_decomposition}, the metric becomes %todo: think about why
+\begin{equation}
+    ds^2 =-dt^2 + a^2(t)(d\chi^2 + S_k(\chi)^2d\Omega^2)
+    \label{FLRW1}
+\end{equation}
+where $k = \text{sgn}({K})$,\,$d\Omega^2 = d\theta^2 + \sin^2(\theta)d\phi^2$ and
+\[
+S_k(\chi) :=
+    \begin{cases} 
+    \sin(\chi) & \text{if } k = +1 \\
+    \chi       & \text{if } k = 0 \\
+    \sinh(\chi)& \text{if } k = -1
+\end{cases}
+\]
+Equation \eqref{FLRW1} defines the Friedmann-Lemaître-Robertson-Walker (FLRW) metric.
+The time coordinate is also called \emph{cosmic time}, while $a(t)$ is the \emph{scale factor}, and determines the physical scale of the spatial slices.
+\para
+It is convenient to re-express the FLRW metric by introducing a new coordinate $r := S_k(\chi)$. Equation \eqref{FLRW1} then becomes
+\begin{equation}
+    ds^2 = -dt^2 + a(t)^2(\frac{dr^2}{1-kr^2} + r^2d\Omega^2)
+\label{FLRW2}
+\end{equation}
+Despite its name, the coordinate $r$ is dimensionless, while $a(t) \sim [L]$. Notice that the areal radius in these coordinates is \[
+    r_A = a(t) r
+\]
+while the \emph{instantaneous physical distance}, the Euclidean spatial distance of two points at fixed $t$, is \[
+    dR = a(t) \frac{dr}{\sqrt{1-kr^2}}
+\]
+These equations tell us that $a(t)$ determines spatial lengths. If $a(t)$ increases, we may say that space expands, while if it decreases, we may say that it contracts.
+\para
+Through the usual procedure, it's possible to calculate the Christoffel symbols, the Riemann and Ricci tensors, and the scalar curvature associated to the metric \eqref{FLRW2}. This is done in appendix  %todo: add appendix
+through the aid of the \emph{Mathematica} programming language.
+\section{Cosmic Fluids}
+We would like to determine the evolution of the factor $a(t)$ in \eqref{FLRW2}. To do so we must introduce a distribution of mass-energy that populates our universe. We work under the assumption that whatever is filling our spacetime can be approximated as a perfect fluid, so its energy-momentum tensor takes the form 
+\begin{equation}
+    T_{\mu \nu} = (\rho + p) u_\mu u_\nu + pg_{\mu \nu} 
+    \label{EM_tensor}
+\end{equation}
+where $p$ is the pressure and $\rho$ the density of the fluid at rest, and $u^\mu$ its four-velocity. To be consistent with our assumption of isotropy and homogeneity, $\rho$ and $p$ must be constant in space, %is this true?
+and the fluid must be at rest with respect to the isotropic observers, so $u^\mu = (1,0,0,0)$ in our chosen coordinates, and \eqref{EM_tensor} becomes
+\begin{equation}
+T_{\mu\nu} = \begin{pmatrix} 
+\rho & \; 0 \; & \; 0 \; & \; 0 \; \\ 
+0 & & & \\ 
+0 & & g_{ij} p & \\ 
+0 & & & 
+\end{pmatrix}
+\end{equation}
+By raising the index, we obtain\[
+T^\mu{}_\nu = \text{diag}(-\rho, p,p,p)
+\]
+so the trace is
+\begin{equation}
+    T^\mu{}_\mu = -\rho + 3p
+    \label{EM_trace}
+\end{equation}
+Before plugging the energy-momentum tensor into the Einstein field equations, we turn to the energy conservation equation \begin{equation}
+    0 = \nabla_\mu T^\mu{}_0 = \partial_\mu T^\mu{}_0 + T^\sigma{}_0 \Gamma^{\mu}_\sigma{}_\mu - T^\mu{}_\sigma \Gamma^\sigma_0{}_\mu = - \dot{\rho} - 3 \frac{\dot{a}}{a}(\rho + p)
+    \label{E_conservation}
+\end{equation}
+where the last equality is derived from the results of appendix. %todo: eqrefernce appendix
+To proceed, we must specify an \emph{equation of state} which relates $\rho$ to $p$. We choose the simple relation \[
+    p = w \rho
+\]
+where $w$ is a constant. Then \eqref{E_conservation} becomes
+\begin{equation}
+    \frac{\dot{\rho}}{\rho} = - 3 \frac{\dot{a}}{a}(1+w)
+    \label{rho_hubble_relation}
+\end{equation}
+The term $\frac{\dot{a}}{a}$, which is of particular importance in cosmology, is called the \emph{Hubble parameter} $H$.
+\para
+Integrating both sides of equation \eqref{rho_hubble_relation} we obtain
+\begin{equation}
+    \rho \propto a^{-3(1+w)}
+    \label{rho_a_prop}
+\end{equation}
+The value of $w$ depends on the composition of the fluid. Two kinds of simple cosmological fluids are \emph{dust} and \emph{radiation}. Dust is a fluid made up of non-relativistic particles, whose pressure is negligible with respect to its density $\rho_d$. So for dust $w = 0$, and \eqref{rho_a_prop} implies
+\[
+\rho_d \propto a^{-3}
+\]
+which tells us that the dilution of dust is inversely proportional to the volumetric expansion of space.
+\para
+The second fluid we consider is radiation, which is made up of photons. Since photons are just excitations of the electromagnetic field, the energy-momentum tensor must coincide with %todo: add eqreference
+\[
+    T^{\mu \nu} = F^{\mu \lambda} F^{\nu}{}_{\lambda} - \frac{1}{4} g^{\mu \nu} F^{\lambda \sigma}F_{\sigma \lambda}
+\]
+which is traceless. Theeqrefore, by equation \eqref{EM_trace} we find $w = \frac{1}{3}$, and from \eqref{rho_a_prop} we obtain \[
+    \rho_r \propto a^{-4}
+\]
+Unlike dust, the energy density of radiation drops faster because, in addition to volumetric dilution, the constituent photons lose energy via a cosmological redshift proportional to $a^{-1}$.
+\para
+It is also possible to treat dark energy as a perfect fluid, with pressure \[p_{\Lambda} = - \rho_{\Lambda} = \frac{\Lambda}{8 \pi G_N}\] where $\Lambda$ is the cosmological constant and $G_N$ Newton's constant. Since $w = -1$, equation \eqref{rho_a_prop} implies
+\[
+\rho_\Lambda \propto a^{0}
+\]
+So $\rho_\Lambda$ indeed remains constant.
+
+\section{The Friedmann Equations}
+We finally turn to the Einstein field equations \[
+    R_{\mu \nu}  - \frac{1}{2} R g_{\mu \nu} = 8 \pi G_N T_{\mu \nu}
+\]
+By taking the trace we obtain $R = - 8 \pi G T$, where $T = T^\mu{}_\mu$. Substituting this expression back into the Einstein equations we obtain \begin{equation}  
+R_{\mu \nu} = 8 \pi G_N (T_{\mu\nu} - \frac{1}{2}T g_{\mu\nu})
+\label{EE}
+\end{equation}
+
+We again make use of the results in appendix %cite appendix
+to compute the $\mu\nu = 00$ and $\mu\nu = ij$ components of equation \eqref{EE}, yielding respectively
+\begin{equation}
+    \left( \frac{\dot{a}}{a} \right)^2 = \frac{8\pi G_N}{3} \rho - \frac{k}{a^2}
+    \label{F1}
+\end{equation}
+and
+\begin{equation}
+    \frac{\ddot{a}}{a} = -\frac{4\pi G_N}{3} (\rho + 3p).
+    \label{F2}
+\end{equation}
+These are known as the Friedmann equations. These equations are not independent: if we have a solution $a(t)$ of equation \eqref{F1}, then we automatically have a solution to equation \eqref{F2}. To see this, we differentiate \eqref{F1}, finding: 
+\[
+6 \frac{\dot{a}}{a} \left( \frac{\ddot{a}}{a} - \frac{\dot{a}^2}{a^2} - \frac{k}{a^2} \right) = 8\pi G_N \dot{\rho}
+\]
+Now we substitute the second and third terms by using equation \eqref{F1}, obtaining
+\[
+    6 \frac{\dot{a}}{a} \left( \frac{\ddot{a}}{a} - \frac{8\pi G_N}{3} \rho \right) = 8\pi G_N \dot{\rho}
+\]
+Then we use equation \eqref{E_conservation} to replace $\dot{\rho}$ on the right side. After some algebraic manipulation, we recover \eqref{F2}.
+%todo: should I remove all repetitions of equation in this discussion? maybe i should put parentheses around equations?
+\para
+We can make the Friedmann equations look cleaner by introducing the \emph{critical density} $\rho_\text{crit} = \frac{3 H^2}{8\pi G_N}$, and the \emph{density parameter} $\Omega = \frac{\rho}{\rho_\text{crit}}$. With these definitions equation \eqref{F1} becomes
+\begin{equation}
+     \Omega - 1 =  \frac{k}{a^2H^2}
+     \label{FOmega}
+\end{equation}
+Equation \eqref{FOmega} shows that the ratio between $\rho$ and $\rho_c$ determines  the geometry of the universe in the following way:
+\begin{itemize}
+    \item $\rho < \rho_{\text{crit}} \iff \Omega < 1 \iff k = -1 \iff \text{Open Universe}$
+    \item $\rho = \rho_{\text{crit}} \iff \Omega = 1 \iff k = 0 \iff \text{Flat Universe}$
+    \item $\rho > \rho_{\text{crit}} \iff \Omega > 1 \iff k = +1 \iff \text{Closed Universe}$
+\end{itemize}
+\para
+Currently there is no evidence for any curvature in our universe. As a matter of fact, experiments
+provide the bound $|\Omega-1| < 0.01$. %todo: provide eqreference
+\para
+The fluids we have discussed in the previous section coexist, each adding its contribution to the $\rho$ term in the Friedmann equation. But, since they evolve at different rates with respect to the scale factor $a$, there are some periods in which some fluids dominate, and all the others are negligible. This motivates us to consider solutions of the Friedmann equation with only one fluid, and we will also take the universe as flat, so $k=0$.
+\para
+Under these assumptions it is straightforward to solve the equation \eqref{F1}. We use the relation \eqref{rho_a_prop} to substitute $\rho$ on the right side, obtaining a differential equation that can be integrated to find the solution \begin{equation}
+    \begin{cases} 
+    a(t) \propto t^{\frac{2}{3(w+1)}} & \text{if } w \neq -1 \\
+    a(t) \propto e^{Ht}, \; H = \text{const} & \text{if } w = -1
+\end{cases}
+    \label{solF}
+\end{equation}
+The specific case of a flat, matter-dominated universe ($w = 0$) is referred to as the \emph{Einstein-de Sitter} model. In this model the scale factor evolves as $a \propto t^{\frac{2}{3}}$. A flat radiation dominated universe, meanwhile, evolves as $a \propto t^{\frac{1}{2}}$. Finally for a flat, vacuum-dominated universe with positive cosmological constant, we have $a(t) \propto e^{Ht}$, where $H$ coincides with the Hubble parameter, which is now constant.This final scenario is known as a \emph{de Sitter universe}.
+
+% --- Start of Appendices ---
+\appendix
+\section{FLRW metric Christoffel Symbol and Riemann Tensor}
+ 
+\end{document}
