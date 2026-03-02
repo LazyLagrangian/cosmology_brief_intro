@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {paragraph}{}{1}{section*.2}%
 \contentsline {paragraph}{}{1}{section*.3}%
-\contentsline {section}{\numberline {2}Homogeneity and Isotropy}{1}{section.2}%
+\contentsline {section}{\numberline {2}Homogeneity and Isotropy}{2}{section.2}%
 \contentsline {paragraph}{}{2}{section*.4}%
 \contentsline {paragraph}{}{2}{section*.5}%
 \contentsline {paragraph}{}{2}{section*.6}%
@@ -15,14 +15,13 @@
 \contentsline {paragraph}{}{5}{section*.13}%
 \contentsline {paragraph}{}{5}{section*.14}%
 \contentsline {section}{\numberline {4}Cosmic Fluids}{5}{section.4}%
-\contentsline {paragraph}{}{6}{section*.15}%
+\contentsline {paragraph}{}{7}{section*.15}%
 \contentsline {paragraph}{}{7}{section*.16}%
 \contentsline {paragraph}{}{7}{section*.17}%
-\contentsline {paragraph}{}{7}{section*.18}%
 \contentsline {section}{\numberline {5}The Friedmann Equations}{7}{section.5}%
-\contentsline {paragraph}{}{8}{section*.19}%
+\contentsline {paragraph}{}{8}{section*.18}%
+\contentsline {paragraph}{}{9}{section*.19}%
 \contentsline {paragraph}{}{9}{section*.20}%
 \contentsline {paragraph}{}{9}{section*.21}%
-\contentsline {paragraph}{}{9}{section*.22}%
 \contentsline {section}{\numberline {A}FLRW Connection and Curvature}{10}{appendix.A}%
-\contentsline {paragraph}{}{10}{section*.23}%
+\contentsline {paragraph}{}{10}{section*.22}%

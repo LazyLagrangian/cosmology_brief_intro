@@ -1,6 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1772457454.79066 "/Users/liamcavini/Desktop/gravity/elaborato/tex/elaborato.tex" "elaborato.pdf" "elaborato" 1772457455.36208 0
-  "/Users/liamcavini/Desktop/gravity/elaborato/tex/elaborato.tex" 1772457454.58712 22186 b1e3a8fb75c6a36305a4859eeafe0efd ""
+["pdflatex"] 1772297948.3367 "/Users/liamcavini/Desktop/gravity/elaborato/tex/elaborato.tex" "elaborato.pdf" "elaborato" 1772297948.89219 0
+  "%OUTDIR%/elaborato.aux" 1772297948.83512 3863 426e1ce50056f6d0b663c501f5dc0d73 "pdflatex"
+  "%OUTDIR%/elaborato.out" 1772297948.83572 869 0530f73f1d207f41471369e4a84768ee "pdflatex"
+  "%OUTDIR%/elaborato.toc" 1772297948.83592 1392 b52c3798015319db3c26a4713d293ba5 "pdflatex"
+  "/Users/liamcavini/Desktop/gravity/elaborato/tex/elaborato.tex" 1772297947.46468 21962 980ea52005040148a5780b6a20fe7e28 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvbc7t.tfm" 1136768653 2672 88159036c64e674fcd9515bc9c7052d4 ""
@@ -108,15 +111,12 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1742482758 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1742482719 3345738 8e4579a6129c64af11140e7c9ecf11d7 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "elaborato.aux" 1772457455.29965 3994 b7e85cb8de176bc6c3be00dd42835cee "pdflatex"
-  "elaborato.out" 1772457455.30028 869 0530f73f1d207f41471369e4a84768ee "pdflatex"
-  "elaborato.tex" 1772457454.58712 22186 b1e3a8fb75c6a36305a4859eeafe0efd ""
-  "elaborato.toc" 1772457455.30047 1437 bdd11398695d0705e392e71613df0379 "pdflatex"
+  "elaborato.tex" 1772297947.46468 21962 980ea52005040148a5780b6a20fe7e28 ""
   "jheppub.sty" 1771708298.9761 11827 a63a1c0afbc2a2e2deda0b81ed1de5ba ""
   (generated)
-  "elaborato.aux"
-  "elaborato.log"
-  "elaborato.out"
+  "%OUTDIR%/elaborato.aux"
+  "%OUTDIR%/elaborato.log"
+  "%OUTDIR%/elaborato.out"
+  "%OUTDIR%/elaborato.toc"
   "elaborato.pdf"
-  "elaborato.toc"
   (rewritten before read)
